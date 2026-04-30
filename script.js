@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/tasks";
+const API_URL = window.location.origin + "/api/tasks";
 
 document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('taskInput');
