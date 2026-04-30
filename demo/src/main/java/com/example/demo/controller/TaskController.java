@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "*") // Allows your HTML file to talk to this server
+@CrossOrigin(origins = "*" , allowedHeaders = "*") // Allows your HTML file to talk to this server
 public class TaskController {
 
     @Autowired
