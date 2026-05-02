@@ -1,8 +1,13 @@
 [build]
 builder = "NIXPACKS"
-# Remove "cd demo &&" because we are already in the demo folder
-buildPlan.phases.build.cmds = ["mvn clean package -DskipTests"]
+# This forces the builder to install JDK 21 before running Maven
+nixpkgsArchive = "github:NixOS/nixpkgs/nixos-23.11" 
+
+[build.phases.setup]
+nixPkgs = ["jdk21_headless", "maven"]
+
+[build.phases.build]
+cmds = ["mvn clean package -DskipTests"]
 
 [deploy]
-# Remove "demo/" prefix from the jar path
 startCommand = "java -jar target/*.jar"
